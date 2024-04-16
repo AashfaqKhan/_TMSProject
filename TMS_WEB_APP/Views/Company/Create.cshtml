@@ -1,0 +1,118 @@
+﻿@model TMS_DTO.DTOs.CompaniesDTO
+@{
+    Layout = "";
+}
+
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign up | TMS</title>
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/css/auth.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="auth-content">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div style="color:purple;font-family:Algerian" class="sidebar-header mb-4">
+                        <h1>TMS<span style="font-size:xx-small">Tailor Management System</span></h1>
+                    </div>
+                    <h6 class="mb-4 text-muted">Create new account</h6>
+                    <form asp-action="Create" asp-controller="Company" method="post">
+                        <div class="mb-3 text-start">
+                            <label asp-for="Name" for="name" class="form-label">Name</label>
+                            <input asp-for="Name" type="text" class="form-control" placeholder="Enter Name" required>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label asp-for="Email" for="email" class="form-label">Email</label>
+                            <input asp-for="Email" type="email" class="form-control" placeholder="Enter Email" required>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label asp-for="Phone" for="Phone" class="form-label">Phone No</label>
+                            <input asp-for="Phone" type="text" class="form-control" placeholder="Enter Phone No" required>
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label asp-for="Password" for="Password" class="form-label">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" required>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3 text-start">
+                            <label asp-for="ConfirmPassword" for="ConfirmPassword" class="form-label">Confirm Password</label>
+                            <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" required>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3 text-start">
+                            <div class="form-check">
+                                <input asp-for="Status" class="form-check-input" type="checkbox" value="true" id="statusCheckbox" name="status">
+                               @*  <label asp-for="Status" class="form-check-label" for="statusCheckbox">
+                                    Status
+                                </label> *@
+
+                                <label asp-for="Status" class="form-check-label" for="statusCheckbox">
+                                    I agree to the <a href="#" tabindex="-1">terms and policy</a>.
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary shadow-2 mb-4" disabled>Register</button>
+                    </form>
+                    <p class="mb-0 text-muted">Allready have an account? <a asp-action="Login" asp-controller="Account">LogIn</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+          
+            $("button[type='submit']").prop("disabled", true);
+
+            function checkRequiredFields() {
+                var allFieldsValid = true;
+
+                $(".form-control[required]").each(function () {
+                    if (!$(this)[0].checkValidity() || $(this).val() === "") {
+                        allFieldsValid = false;
+                        return false;
+                    }
+                });
+
+                var password = $("#Password").val();
+                var confirmPassword = $("#ConfirmPassword").val();
+                var passwordsMatch = password === confirmPassword;
+
+                $("button[type='submit']").prop("disabled", !(allFieldsValid && passwordsMatch));
+            }
+
+            $(".form-control[required]").on("input", function () {
+                checkRequiredFields();
+            });
+
+            $("#ConfirmPassword").on("input", function () {
+                checkRequiredFields();
+            });
+        });
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+﻿@model TMS_DTO.DTOs.CompaniesDTO
+@{
+    Layout = "";
+}
+
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign up | TMS</title>
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/css/auth.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="auth-content">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div style="color:purple;font-family:Algerian" class="sidebar-header mb-4">
+                        <h1>TMS<span style="font-size:xx-small">Tailor Management System</span></h1>
+                    </div>
+                    <h6 class="mb-4 text-muted">Edit account</h6>
+                    <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+                        <div class="mb-3 text-start">
+                            <label asp-for="Name" for="name" class="form-label">Name</label>
+                            <input asp-for="Name" type="text" class="form-control" placeholder="Enter Name" required>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label asp-for="Email" for="email" class="form-label">Email</label>
+                            <input asp-for="Email" type="email" class="form-control" placeholder="Enter Email" required>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label asp-for="Phone" for="Phone" class="form-label">Phone No</label>
+                            <input asp-for="Phone" type="number" class="form-control" placeholder="Enter Phone No" required>
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label asp-for="Password" for="Password" class="form-label">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" required>
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label asp-for="ConfirmPassword" for="ConfirmPassword" class="form-label">Confirm Password</label>
+                            <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" required>
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <div class="form-check">
+                                <input asp-for="Status" class="form-check-input" type="checkbox" value="true" id="statusCheckbox" name="status">
+                              
+                                <label asp-for="Status" class="form-check-label" for="statusCheckbox">
+                                    I agree to the <a href="#" tabindex="-1">terms and policy</a>.
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary shadow-2 mb-4">Save</button>
+                    </form>
+                    <p class="mb-0 text-muted">Allready have an account? <a asp-action="Login" asp-controller="Account">Log in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

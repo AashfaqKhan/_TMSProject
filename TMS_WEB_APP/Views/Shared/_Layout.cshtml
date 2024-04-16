@@ -1,0 +1,207 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | TMS</title>
+    <link href="~/assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/css/master.css" rel="stylesheet">
+    <link href="~/assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div>
+
+    <div class="wrapper">
+        <nav id="sidebar" class="" style="">
+            <div class="sidebar-header" style="width:200px;height:-40px;">
+                <img src="~/Images/log.png" alt="Cinque Terre" class="img-thumbnail mx-auto" width="200px" height="10px">
+            </div>
+            <ul class="list-unstyled components text-secondary">
+                <li>
+                    <a asp-action="Index" asp-controller="Home"><i class="fas fa-home"></i> Dashboard</a>
+                </li>
+                <li>
+
+                    @* <a href="#uielementsmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-user-friends"></i> Users</a>
+                    <ul class="collapse list-unstyled" id="uielementsmenu"> *@
+                    <a href="#authmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-user-friends"></i> Users</a>
+                    <ul class="collapse list-unstyled" id="authmenu">
+
+                        <li>
+                            <a asp-action="Create" asp-controller="User"><i class="fas fa-angle-right"></i> Add User</a>
+                        </li>
+                        <li>
+                            <a asp-action="Users" asp-controller="User"><i class="fas fa-angle-right"></i> Users</a>
+                        </li>
+                        <li>
+                            <a asp-action="UserRole" asp-controller="UserRole"><i class="fas fa-angle-right"></i> User Role</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    @* <a href="#uielementsmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i> Admin Setting</a>
+                    <ul class="collapse list-unstyled" id="uielementsmenu"> *@
+                    <a href="#pagesmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle no-caret-down"><i class="fas fa-layer-group"></i> Companies</a>
+                    <ul class="collapse list-unstyled" id="pagesmenu">
+@*                         <li>
+                            <a asp-action="Create" asp-controller="Company"><i class="fas fa-angle-right"></i> Companies</a>
+                        </li> *@
+                        <li>
+                            <a asp-action="Companiess" asp-controller="Company"><i class="fas fa-angle-right"></i> Companies</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="HousingSocieties"><i class="fas fa-user-friends"></i>Societies</a>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="DailyExpenses"><i class="fas fa-house-user"></i>DailyExpenses</a>
+                </li>
+                <li>
+                    <a href="settings.html"><i class="fas fa-cog"></i>Settings</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="body" class="">
+            <main role="main">
+                <nav class="navbar navbar-expand-lg navbar-white bg-white">
+                    <button type="button" id="sidebarCollapse" class="btn btn-light">
+                        <i class="fas fa-bars"></i><span></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ms-auto">
+                            <li class="nav-item dropdown">
+                                <div class="nav-dropdown">
+                                    <a href="#" id="nav1" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-link"></i> <span>Quick Links</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end nav-link-menu" aria-labelledby="nav1">
+                                        <ul class="nav-list">
+                                            <li><a href="" class="dropdown-item"><i class="fas fa-list"></i> Access Logs</a></li>
+                                            <div class="dropdown-divider"></div>
+                                            <li><a href="" class="dropdown-item"><i class="fas fa-database"></i> Back ups</a></li>
+                                            <div class="dropdown-divider"></div>
+                                            <li><a href="" class="dropdown-item"><i class="fas fa-cloud-download-alt"></i> Updates</a></li>
+                                            <div class="dropdown-divider"></div>
+                                            <li><a href="" class="dropdown-item"><i class="fas fa-user-shield"></i> Roles</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <div class="nav-dropdown">
+                                    <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="~/Images/3.jpg" alt="Cinque Terre" class="rounded-circle" width="30px" height="30px"> <span>@User.Identity.Name</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end nav-link-menu">
+                                        <ul class="nav-list">
+                                            <li><a href="" class="dropdown-item"><i class="fas fa-address-card"></i> Profile</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Account" asp-action="ChangePassword"><i class="fas fa-sign-out-alt"></i> Change Password</a></li>
+                                            <li><a href="" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a></li>
+                                            <div class="dropdown-divider"></div>
+                                            <li><a class="dropdown-item" asp-controller="Account" asp-action="LogOut"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="content">
+                   
+                    <div class="container">
+
+                        @RenderBody()
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    </div>
+
+
+    <footer class="bg-light text-center text-white">
+
+        <div class="container p-4 pb-0">
+
+            <section class="mb-4">
+
+                <a class="btn btn-primary btn-floating m-1"
+                   style="background-color: #3b5998;"
+                   href="#!"
+                   role="button">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+
+                <a class="btn btn-primary btn-floating m-1"
+                   style="background-color: #55acee;"
+                   href="#!"
+                   role="button">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+
+                <a class="btn btn-primary btn-floating m-1"
+                   style="background-color: #dd4b39;"
+                   href="#!"
+                   role="button">
+                    <i class="fab fa-google"></i>
+                </a>
+
+
+                <a class="btn btn-primary btn-floating m-1"
+                   style="background-color: #ac2bac;"
+                   href="#!"
+                   role="button">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+
+                <a class="btn btn-primary btn-floating m-1"
+                   style="background-color: #0082ca;"
+                   href="#!"
+                   role="button">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a class="btn btn-primary btn-floating m-1"
+                   style="background-color: #333333;"
+                   href="#!"
+                   role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+
+        </div>
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <span class="text-black"> © 2023 Copyright: </span>
+            <a class="text-black" style="font-weight:bold;" href="https://systemlinkss.com/">System Links</a>
+        </div>
+    </footer>
+   
+    </div>
+   
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/chartsjs/Chart.min.js"></script>
+    <script src="~/assets/js/dashboard-charts.js"></script>
+    <script src="~/assets/js/script.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    
+ 
+</body>
+</html>

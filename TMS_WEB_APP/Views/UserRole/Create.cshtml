@@ -1,0 +1,37 @@
+﻿@model TMS_DTO.DTOs.UserRoleDTO
+<div style="padding:60px">
+<h2 style="font-weight:bold">Add Role</h2>
+
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">User Role</div>
+        <div class="card-body">
+
+            <form asp-action="Create" class="needs-validation" novalidate accept-charset="utf-8">
+                <div class="row g-2">
+                    <div class="mb-3 col-md-8">
+                        <label asp-for="Name" class="form-label">Name</label>
+                        <input asp-for="Name" type="text" class="form-control" name="name" placeholder="Enter User Role" required>
+
+                    </div>
+                   
+                </div>
+                <div class="row g-2">
+                    <div class="mb-3 col-md-6">
+
+                        <input asp-for="IsActive" class="form-check-input" type="checkbox" value="true" id="statusCheckbox" name="isactive">
+                        <label asp-for="IsActive" class="form-check-label" for="statusCheckbox">
+                            Status
+                        </label>
+                    </div>
+                </div>
+
+                    <button asp-action="UserRole" asp-controller="UserRole" class="btn btn-primary btn-sm "><i class="fas fa-arrow-alt-circle-left"></i> Back</button>&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-success btn-sm "><i class="fas fa-save"></i> Add Role</button>
+            </form>
+
+               
+        </div>
+    </div>
+</div>
+</div>

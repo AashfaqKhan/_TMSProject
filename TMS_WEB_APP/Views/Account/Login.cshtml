@@ -1,0 +1,104 @@
+﻿@model TMS_DTO.DTOs.LoginDTO
+@{
+    Layout = "";
+}
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login | TMS</title>
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/css/auth.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="auth-content">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div style="color:purple;font-family:Algerian" class="sidebar-header mb-4">
+                        <h1>TMS<span style="font-size:xx-small">Tailor Management System</span></h1>
+                    </div>
+                    <h6 class="mb-4 text-muted">Login to your account</h6>
+                    <form asp-action="Login" asp-controller="Account" method="post">
+                        <div class="mb-3 text-start">
+                            <label asp-for="Username" for="Username" class="form-label">Email:</label>
+                            <input asp-for="Username" type="email" id="Username" name="Username" class="form-control" placeholder="Enter Your Email" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label asp-for="Password" for="Password" class="form-label">Password:</label>
+                            <input asp-for="Password" type="password" id="Password" name="Password" class="form-control" placeholder="Enter Your Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <div class="form-check">
+                                <input class="form-check-input" name="remember" type="checkbox" value="" id="check1">
+                                <label class="form-check-label" for="check1">
+                                    Remember me on this device
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary shadow-2 mb-4" disabled>Login</button>
+                    </form>
+                    <p class="mb-2 text-muted">Forgot password? <a href="forgot-password.html">Reset</a></p>
+                    <p class="mb-0 text-muted">Don't have account yet? <a asp-action="Create" asp-controller="Company">Signup</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+           
+            $("button[type='submit']").prop("disabled", true);
+
+            function checkFieldsValidity() {
+                var username = $("#Username").val();
+                var password = $("#Password").val();
+
+                
+                if (username !== "" && password !== "") {
+                  
+                    if ($("form")[0].checkValidity()) {
+                        $("button[type='submit']").prop("disabled", false); 
+                    } else {
+                        $("button[type='submit']").prop("disabled", true); 
+                    }
+                } else {
+                    $("button[type='submit']").prop("disabled", true); 
+                }
+            }
+
+            $("#Username, #Password").on("input", function () {
+                checkFieldsValidity();
+            });
+
+            $("form").on("submit", function (e) {
+                
+                checkFieldsValidity();
+
+                if ($("button[type='submit']").prop("disabled")) {
+                    e.preventDefault();
+                }
+            });
+
+            checkFieldsValidity();
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
