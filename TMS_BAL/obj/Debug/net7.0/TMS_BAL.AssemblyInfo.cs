@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TMS_BAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dee2619d3864a1af98d49c0beeb3ebd42e75d84")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5de27767862abbc1b56f4b2bc283f54065aeb300")]
 [assembly: System.Reflection.AssemblyProductAttribute("TMS_BAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TMS_BAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
