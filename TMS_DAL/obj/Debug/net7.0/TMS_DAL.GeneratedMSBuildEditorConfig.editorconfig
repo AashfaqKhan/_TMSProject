@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TMS_DAL
-build_property.ProjectDir = C:\SystemLinks\TMS\TMS\TMS_DAL\
+build_property.ProjectDir = C:\SystemLinks\AshTMS\_TMSProject\TMS_DAL\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
